@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="sample-kjar" default="true">
+        
+        <!-- Updated Sessions -->
+        <ksession name="default-stateless" default="true" type="stateless" />
+        <ksession name="default-stateless-debug" default="false" type="stateless">
+            <listeners>
+                <agendaEventListener type="com.ibm.bamoe.dmoe.adaptors.engine.RuleTraceEventListener"/>
+            </listeners>
+        </ksession>
+ 
+        <!-- Original Sessions (used for backwards compatability of unit tests.  These should be removed eventually as they take up memory space for each session) -->
+        <ksession name="default-stateful-kie-session" type="stateful" />                            
+        <ksession name="default-stateless-kie-session" type="stateless" />              
+        <ksession name="default-stateless-kie-session-debug" type="stateless">
+            <listeners>
+                <agendaEventListener type="com.ibm.bamoe.dmoe.adaptors.engine.RuleTraceEventListener"/>
+            </listeners>
+        </ksession>
+    </kbase>
+</kmodule>

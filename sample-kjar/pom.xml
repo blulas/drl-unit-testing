@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ibm.bamoe.dmoe</groupId>
+    <artifactId>drl-unit-testing-sample-kjar</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>kjar</packaging>
+
+    <properties>
+        <!-- General Properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Java Properties -->
+		<java.version>11</java.version>
+
+		<!-- Common Maven Plugins -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.compiler.parameters>true</maven.compiler.parameters>
+		<maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+		<maven.shade.plugin.version>3.2.4</maven.shade.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+
+		<!-- Testing Properties -->
+		<junit.version>4.13.2</junit.version>
+		<skipTests>true</skipTests>
+        <cucumber.version>7.0.0</cucumber.version>
+
+		<!-- Logging Dependencies -->
+		<slf4j.version>1.7.32</slf4j.version>
+		<logback.version>1.2.10</logback.version>
+
+		<!-- Third Party Dependencies -->
+		<lombok.version>1.18.22</lombok.version>
+
+        <!-- IBM Decision Manager Open Edition 8.0.x -->
+		<!-- This will be replaced in version 9.x, as all Maven dependencies will be published to Maven Central vs Red Hat's public Maven repository -->
+		<bamoe.bom.version>8.0.3.redhat-00002</bamoe.bom.version>
+		<kie-maven-plugin.version>7.67.2.Final-redhat-00006</kie-maven-plugin.version>
+
+        <!-- KJAR Configuration Options -->
+        <kjar-config-validateDMN>disable</kjar-config-validateDMN>
+
+		<!-- Application Modules -->
+		<engine.adaptor.version>1.0.0-SNAPSHOT</engine.adaptor.version>
+		<cucumber.adaptor.version>1.0.0-SNAPSHOT</cucumber.adaptor.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- IBM Business Automation Manager Open Editions -->
+            <dependency>
+                <groupId>com.redhat.ba</groupId>
+                <artifactId>ba-platform-bom</artifactId>
+                <version>${bamoe.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>org.kie.server</groupId>
+			<artifactId>kie-server-api</artifactId>
+            <scope>provided</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-internal</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-bpmn2</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-engine</artifactId>
+            <scope>provided</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+	    <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-model-compiler</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+	    <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-canonical-model</artifactId>
+            <scope>provided</scope>
+  	    </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-workbench-models-guided-dtable</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-scenario-simulation-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+    
+        <dependency>
+              <groupId>org.drools</groupId>
+              <artifactId>drools-scenario-simulation-backend</artifactId>
+              <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>com.ibm.bamoe.dmoe.adaptors</groupId>
+			<artifactId>embedded-engine-adaptor</artifactId>
+			<version>${engine.adaptor.version}</version>
+            <scope>test</scope>
+		</dependency>
+    </dependencies>
+
+    <build>
+	<defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>${kie-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <validateDMN>${kjar-config-validateDMN}</validateDMN>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                  <source>${java.version}</source>
+                  <target>${java.version}</target>
+                </configuration>
+			</plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-testResources</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                          <goal>testResources</goal>
+                        </goals>
+                        <configuration>
+                          <resources>
+                            <resource>
+                              <directory>src/test/resources</directory>
+                              <excludes>
+                                <exclude>**/*.*.scesim</exclude>
+                              </excludes>
+                            </resource>
+                          </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<configuration>
+				   <systemPropertyVariables>
+<!--					  <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>-->
+					  <maven.home>${maven.home}</maven.home>
+				   </systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+    </build>
+</project>
