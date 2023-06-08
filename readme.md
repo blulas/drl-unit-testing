@@ -28,7 +28,6 @@ Once you have configured your local development environment, you need to perform
 This repository is organized in a series of modules:  
 
 1.  [**Embedded Rule Engine Adaptor**](./embedded-engine-adaptor/readme.md) - An embedded engine adaptor for DRL rules.  
-2.  [**Cucumber Adaptor**](./cucumber-adaptor/readme.md) - An adaptor for the Cucumbrer framework, which uses the embedded rule engine adaptor to execute DRL rules from Cucumber features.
 3.  [**Sample KJAR**](./sample-kjar/readme.md) - A sample KJAR with DRL rules and Cucumber features, used for demonstration purposes.
 
 ## Additional Information (*Appendicies*)
