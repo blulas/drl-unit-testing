@@ -1,4 +1,4 @@
-# IBM Digital Business Automation - Decision Manager Open Edition - DRL Testing Quick Start
+# IBM Digital Business Automation - Decision Manager Open Edition - DRL Testing Sample
 
 This repository contains various tools, scripts, and product extensions useful for managing `IBM Decision Manager Open Edition` projects.
 
