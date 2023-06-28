@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ibm.bamoe.dmoe</groupId>
-    <artifactId>drl-unit-testing-sample-kjar</artifactId>
+    <artifactId>drl-unit-testing-sample-rules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>kjar</packaging>
 
@@ -36,13 +36,12 @@
 		<!-- Third Party Dependencies -->
 		<lombok.version>1.18.22</lombok.version>
 
-        <!-- IBM Decision Manager Open Edition 8.0.x -->
-		<!-- This will be replaced in version 9.x, as all Maven dependencies will be published to Maven Central vs Red Hat's public Maven repository -->
-		<bamoe.bom.version>8.0.3.redhat-00002</bamoe.bom.version>
-		<kie-maven-plugin.version>7.67.2.Final-redhat-00006</kie-maven-plugin.version>
+        <!-- IBM Decision Manager Open Edition 9.0.x -->
+		<bamoe.bom.version>9.0.0.Final</bamoe.bom.version>
+		<kie-maven-plugin.version>8.40.0.Final</kie-maven-plugin.version>
 
-        <!-- KJAR Configuration Options -->
-        <kjar-config-validateDMN>disable</kjar-config-validateDMN>
+        <!-- Rules Configuration Options -->
+        <rules-config-validateDMN>disable</rules-config-validateDMN>
 
 		<!-- Application Modules -->
 		<engine.adaptor.version>1.0.0-SNAPSHOT</engine.adaptor.version>
@@ -53,8 +52,8 @@
         <dependencies>
             <!-- IBM Business Automation Manager Open Editions -->
             <dependency>
-                <groupId>com.redhat.ba</groupId>
-                <artifactId>ba-platform-bom</artifactId>
+                <groupId>com.ibm.bamoe</groupId>
+                <artifactId>bamoe-bom</artifactId>
                 <version>${bamoe.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -98,73 +97,31 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-api</artifactId>
-            <scope>provided</scope>
         </dependency>
-
-		<dependency>
-			<groupId>org.kie.server</groupId>
-			<artifactId>kie-server-api</artifactId>
-            <scope>provided</scope>
-		</dependency>
 
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-internal</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-bpmn2</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
-            <scope>provided</scope>
         </dependency>
       
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-engine</artifactId>
-            <scope>provided</scope>
 		</dependency>
 
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-compiler</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-	    <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-model-compiler</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-	    <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-canonical-model</artifactId>
-            <scope>provided</scope>
-  	    </dependency>
-
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-workbench-models-guided-dtable</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-scenario-simulation-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-    
-        <dependency>
-              <groupId>org.drools</groupId>
-              <artifactId>drools-scenario-simulation-backend</artifactId>
-              <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -212,7 +169,7 @@
                 <version>${kie-maven-plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <validateDMN>${kjar-config-validateDMN}</validateDMN>
+                    <validateDMN>${rules-config-validateDMN}</validateDMN>
                 </configuration>
             </plugin>
 
